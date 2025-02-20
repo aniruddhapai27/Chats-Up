@@ -17,7 +17,7 @@ const Home = () => {
   };
 
   return (
-    <div className="flex justify-between min-w-full lg:min-w-[550px] lg:max-w-[65%] px-2 h-[95%] lg:h-full rounded-xl shadow-lg bg-white/10 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10">
+    <div className="flex justify-between min-w-full lg:min-w-[550px] lg:max-w-[65%] px-2 h-[95%] lg:h-full rounded-xl shadow-lg bg-white/10 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10 ">
       <div
         className={`w-full py-2 lg:flex ${
           isSidebarVisible ? "block" : "hidden"
