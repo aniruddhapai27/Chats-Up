@@ -50,7 +50,7 @@ const Sidebar = ({ onSelectUser }) => {
         const res = await axios.get(`${BACKEND_URL}/api/user/current-chats`, {
           withCredentials: true,
           headers: {
-            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
         const { data } = res;
