@@ -21,6 +21,9 @@ function Login() {
     try {
       const res = await axios.post(`${BACKEND_URL}/api/auth/login`, userInput, {
         withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
       const { data } = res;
       toast.success(data.message);

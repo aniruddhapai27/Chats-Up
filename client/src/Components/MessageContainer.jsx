@@ -43,7 +43,12 @@ const MessageContainer = ({ onBackUser }) => {
       try {
         const res = await axios.get(
           `${BACKEND_URL}/api/message/${selectedConversation?._id}`,
-          { withCredentials: true }
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
         );
         const { data } = res;
         setLoading(false);
@@ -67,7 +72,12 @@ const MessageContainer = ({ onBackUser }) => {
       const res = await axios.post(
         `${BACKEND_URL}/api/message/send/${selectedConversation?._id}`,
         { message: sendData },
-        { withCredentials: true }
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
       const { data } = res;
       console.log(data);

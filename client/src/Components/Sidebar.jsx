@@ -70,6 +70,9 @@ const Sidebar = ({ onSelectUser }) => {
         `${BACKEND_URL}/api/user/search?search=${searchInput}`,
         {
           withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
       const { data } = res;
@@ -106,6 +109,9 @@ const Sidebar = ({ onSelectUser }) => {
       try {
         const res = await axios.post(`${BACKEND_URL}/api/auth/logout`, {
           withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
         });
         const { data } = res;
         setLoading(false);
