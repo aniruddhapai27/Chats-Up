@@ -49,6 +49,9 @@ const Sidebar = ({ onSelectUser }) => {
       try {
         const res = await axios.get(`${BACKEND_URL}/api/user/current-chats`, {
           withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
         });
         const { data } = res;
         setLoading(false);
