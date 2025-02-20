@@ -50,9 +50,10 @@ const Sidebar = ({ onSelectUser }) => {
         const res = await axios.get(`${BACKEND_URL}/api/user/current-chats`, {
           withCredentials: true,
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${localStorage.getItem("chatapp")}`,
           },
         });
+        console.log("Token:", localStorage.getItem("chatapp"));
         const { data } = res;
         setLoading(false);
         setChatUser(data);
