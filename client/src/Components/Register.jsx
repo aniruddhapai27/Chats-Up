@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../Context/AuthContext";
+import { BACKEND_URL } from "../../utils";
 
 function Register() {
   const { setAuthUser } = useAuth();
@@ -43,7 +44,11 @@ function Register() {
     }
     setIsLoading(true);
     try {
-      const res = await axios.post("/api/auth/register", userInput);
+      const res = await axios.post(
+        `${BACKEND_URL}/api/auth/register`,
+        userInput,
+        { withCredentials: true }
+      );
       const { data } = res;
       toast.success(data.message);
       localStorage.setItem("chatapp", JSON.stringify(data));

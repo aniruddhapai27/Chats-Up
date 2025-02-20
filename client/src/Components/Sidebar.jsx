@@ -8,6 +8,7 @@ import { BiLogOut } from "react-icons/bi";
 import { useAuth } from "../Context/AuthContext";
 import { useConversation } from "../Context/ConversationContext";
 import { useSocketContext } from "../Context/SocketContext";
+import { BACKEND_URL } from "../../utils";
 const Sidebar = ({ onSelectUser }) => {
   const navigate = useNavigate();
   const { authUser, setAuthUser } = useAuth();
@@ -46,7 +47,9 @@ const Sidebar = ({ onSelectUser }) => {
     const chatUserHandler = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("/api/user/current-chats");
+        const res = await axios.get(`${BACKEND_URL}/api/user/current-chats`, {
+          withCredentials: true,
+        });
         const { data } = res;
         setLoading(false);
         setChatUser(data);
@@ -56,14 +59,19 @@ const Sidebar = ({ onSelectUser }) => {
       }
     };
     chatUserHandler();
-  }, [setChatUser]);
+  }, []);
 
   // Show user from the search result
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.get(`/api/user/search?search=${searchInput}`);
+      const res = await axios.get(
+        `${BACKEND_URL}/api/user/search?search=${searchInput}`,
+        {
+          withCredentials: true,
+        }
+      );
       const { data } = res;
       setLoading(false);
       if (data.length === 0) {
@@ -96,7 +104,9 @@ const Sidebar = ({ onSelectUser }) => {
     if (confirmLogout === authUser?.username) {
       setLoading(true);
       try {
-        const res = await axios.post("/api/auth/logout");
+        const res = await axios.post(`${BACKEND_URL}/api/auth/logout`, {
+          withCredentials: true,
+        });
         const { data } = res;
         setLoading(false);
 

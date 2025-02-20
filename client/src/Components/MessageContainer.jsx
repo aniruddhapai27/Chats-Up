@@ -5,6 +5,7 @@ import { IoArrowBackSharp, IoSend } from "react-icons/io5";
 import { useConversation } from "../Context/ConversationContext";
 import axios from "axios";
 import { useSocketContext } from "../Context/SocketContext";
+import { BACKEND_URL } from "../../utils";
 
 const MessageContainer = ({ onBackUser }) => {
   const { authUser } = useAuth();
@@ -41,7 +42,8 @@ const MessageContainer = ({ onBackUser }) => {
       setLoading(true);
       try {
         const res = await axios.get(
-          `/api/message/${selectedConversation?._id}`
+          `${BACKEND_URL}/api/message/${selectedConversation?._id}`,
+          { withCredentials: true }
         );
         const { data } = res;
         setLoading(false);
@@ -63,8 +65,9 @@ const MessageContainer = ({ onBackUser }) => {
     setSending(true);
     try {
       const res = await axios.post(
-        `/api/message/send/${selectedConversation?._id}`,
-        { message: sendData }
+        `${BACKEND_URL}/api/message/send/${selectedConversation?._id}`,
+        { message: sendData },
+        { withCredentials: true }
       );
       const { data } = res;
       console.log(data);
