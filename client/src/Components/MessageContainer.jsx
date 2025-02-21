@@ -128,7 +128,7 @@ const MessageContainer = ({ onBackUser }) => {
 
           <div className="flex-1 overflow-auto custom-scrollbar">
             {loading && (
-              <div className="flex w-full h-full flex-col items-center justify-center gap-4 bg-transparent">
+              <div className="flex min-w-full h-full flex-col items-center justify-center gap-4 bg-transparent">
                 <div className="animate-spin h-6 w-6 border-4 border-blue-500 border-t-transparent rounded-full"></div>
               </div>
             )}
@@ -153,7 +153,7 @@ const MessageContainer = ({ onBackUser }) => {
                     } my-2`}
                   >
                     <div
-                      className={`px-4 py-2 w-4/5 h-fit text-wrap rounded-lg max-w-xs ${
+                      className={`px-4 py-2 min-w-2/5 max-w-3/5 sm:max-w-2/5 lg:max-w-3/5 h-fit text-wrap rounded-lg  ${
                         message.senderId === authUser._id
                           ? "bg-sky-600 text-white"
                           : "bg-gray-300 text-black"

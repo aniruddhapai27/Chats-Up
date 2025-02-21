@@ -2,16 +2,16 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
 
 const authRouter = require("./Routes/authRoutes");
 const messageRouter = require("./Routes/messageRoutes");
 const userRouter = require("./Routes/userRoutes");
-const cookieParser = require("cookie-parser");
 const { app, io, server } = require("./Socket/socket");
 
 dotenv.config();
 
-app.use(cors());
+// Middleware
 app.use(express.json());
 app.use(cookieParser());
 app.use(
@@ -21,15 +21,15 @@ app.use(
     methods: ["GET", "POST", "PATCH", "DELETE"],
   })
 );
-const MONGO_URL = process.env.MONGO_URL;
-try {
-  mongoose.connect(MONGO_URL);
-  console.log("Connected to MongoDB");
-} catch (error) {
-  console.log(error);
-}
 
-// define routes
+// MongoDB Connection
+const MONGO_URL = process.env.MONGO_URL;
+mongoose
+  .connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((error) => console.error("MongoDB Connection Error:", error));
+
+// Define Routes
 app.use("/api/auth", authRouter);
 app.use("/api/message", messageRouter);
 app.use("/api/user", userRouter);

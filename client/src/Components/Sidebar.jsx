@@ -20,7 +20,6 @@ const Sidebar = ({ onSelectUser }) => {
   const [newMessageUsers, setNewMessageUsers] = useState(null);
   const { setSelectedConversation, messages } = useConversation();
   const { onlineUser, socket } = useSocketContext();
-
   const nowOnline = chatUser.map((user) => user._id);
   const isOnline = nowOnline.map((userId) => onlineUser?.includes(userId));
 
