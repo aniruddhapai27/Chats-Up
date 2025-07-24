@@ -17,7 +17,6 @@ ChatsUp is a modern chat application that allows users to log in and communicate
 ---
 
 ## 🛠️ Tech Stack
-
 **Frontend:**
 - React.js
 - Axios
