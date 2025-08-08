@@ -7,7 +7,6 @@ ChatsUp is a modern chat application that allows users to log in and communicate
 ---
 
 ## 🚀 Features
-
 - 🔐 Secure User Login
 - 💬 Real-time Chat Functionality
 - 👥 Private & Group Chats
