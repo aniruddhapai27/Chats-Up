@@ -1,7 +1,6 @@
 # 🗨️ ChatsUp
 
 ChatsUp is a modern chat application that allows users to log in and communicate seamlessly in real time.
-
 🌐 **Live URL:** [https://chats-up-phi.vercel.app/login](https://chats-up-phi.vercel.app)
 
 ---
